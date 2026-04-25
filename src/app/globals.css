@@ -1,26 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #FFF0F5;
+  --bg-secondary: #FFE4E1;
+  --text-main: #5F4B4B;
+  --accent-rose: #DB7093;
+  --accent-gold: #D4AF37;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: var(--font-geist-sans), 'Inter', sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-main: var(--text-main);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-gold: var(--accent-gold);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  cursor: none;
+}
+
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-rose);
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.petal {
+  animation: petalFall linear forwards;
+}
+
+input:focus {
+  outline: none;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
